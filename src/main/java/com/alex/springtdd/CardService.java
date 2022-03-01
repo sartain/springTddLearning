@@ -18,20 +18,31 @@ public class CardService {
     }
 
     public void reportCardAsLost(int index) {
-        Card reportedCard = CardStore.getCardFromList(index);
-        CardStore.updateCardStatus(index, "LOST");
-        CardStore.addCard(new Card(reportedCard.getName(), "1230123012301230", "333333", "NEW"));
+        reportCard(index, "LOST");
+        replaceCard(index, "1230123012301230");
     }
 
     public void reportCardAsStolen(int index) {
-        Card reportedCard = CardStore.getCardFromList(index);
-        CardStore.updateCardStatus(index, "STLC");
-        CardStore.addCard(new Card(reportedCard.getName(), "1230123012301230", "333333", "NEW"));
+        reportCard(index, "STLC");
+        replaceCard(index, "1230123012301230");
     }
 
     public void reportCardAsDamaged(int index) {
+        reportCard(index, "DMGD");
+        replaceCard(index);
+    }
+
+    public void reportCard(int index, String status) {
+        CardStore.updateCardStatus(index, status);
+    }
+
+    public void replaceCard(int index) {
         Card reportedCard = CardStore.getCardFromList(index);
-        CardStore.updateCardStatus(index, "DMGD");
         CardStore.addCard(new Card(reportedCard.getName(), reportedCard.getCardNumber(), "333333", "NEW"));
+    }
+
+    public void replaceCard(int index, String cardNumber) {
+        Card reportedCard = CardStore.getCardFromList(index);
+        CardStore.addCard(new Card(reportedCard.getName(), cardNumber, "333333", "NEW"));
     }
 }
