@@ -9,6 +9,10 @@ public class CardService {
 
     }
 
+    public Card getCardGivenIndex(int index) {
+        return CardStore.getCardFromList(index);
+    }
+
     public void freezeCard(int index) {
         CardStore.updateCardStatus(index, "NOAU");
     }
