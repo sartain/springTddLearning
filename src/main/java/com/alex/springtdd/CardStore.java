@@ -9,13 +9,14 @@ public class CardStore {
     private static Card sc_4 = new Card("Dion", "4231423142314231", "246135", "NORM");
 
     public static Card[] cards = {sc_1, sc_2, sc_3, sc_4};
+    public static List<Card> cardList = Arrays.asList(cards);
 
     public static Card getCardFromList(int index) {
-        return cards[index];
+        return cardList.get(index);
     }
 
     public static void updateCardStatus(int index, String status) {
-        cards[index].setStatus(status);
+        cardList.get(index).setStatus(status);
     }
 
 }
