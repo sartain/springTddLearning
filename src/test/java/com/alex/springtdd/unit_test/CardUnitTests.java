@@ -1,6 +1,7 @@
 package com.alex.springtdd.unit_test;
 
 import com.alex.springtdd.Card;
+import com.alex.springtdd.CardService;
 import com.alex.springtdd.CardStore;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,25 @@ public class CardUnitTests {
 
         c = CardStore.getCardFromList(1);
         assertEquals(c.getStatus(), "NOAU");
+    }
+
+    @Test
+    public void freezeCardUpdatesCardStatus() {
+        CardService s = new CardService();
+        s.freezeCard(1);
+        Card c = CardStore.getCardFromList(1);
+        assertEquals(c.getStatus(), "NOAU");
+    }
+
+    @Test
+    public void unfreezeCardUpdatesCardStatus() {
+        CardService s = new CardService();
+        s.freezeCard(1);
+        Card c = CardStore.getCardFromList(1);
+        assertEquals(c.getStatus(), "NOAU");
+        s.unfreezeCard(1);
+        c = CardStore.getCardFromList(1);
+        assertEquals(c.getStatus(), "NORM");
     }
 
 }
