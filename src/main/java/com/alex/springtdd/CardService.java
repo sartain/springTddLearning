@@ -28,4 +28,10 @@ public class CardService {
         CardStore.updateCardStatus(index, "STLC");
         CardStore.addCard(new Card(reportedCard.getName(), "1230123012301230", "333333", "NEW"));
     }
+
+    public void reportCardAsDamaged(int index) {
+        Card reportedCard = CardStore.getCardFromList(index);
+        CardStore.updateCardStatus(index, "DMGD");
+        CardStore.addCard(new Card(reportedCard.getName(), reportedCard.getCardNumber(), "333333", "NEW"));
+    }
 }

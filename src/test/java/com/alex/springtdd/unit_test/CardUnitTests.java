@@ -84,4 +84,16 @@ public class CardUnitTests {
         assertEquals("STLC", originalCard.getStatus());
     }
 
+    @Test
+    public void reportDamagedUpdatesCardStatusAndReissuesNewCardSameDetails() {
+        CardService s = new CardService();
+        Card originalCard = CardStore.getCardFromList(1);
+        s.reportCardAsDamaged(1);
+        Card newCard = CardStore.getCardFromList(CardStore.cardList.size() - 1);
+
+        assertEquals(newCard.getCardNumber(), originalCard.getCardNumber());
+        assertEquals("NEW", newCard.getStatus());
+        assertEquals("DMGD", originalCard.getStatus());
+    }
+
 }
