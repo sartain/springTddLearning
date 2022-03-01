@@ -21,4 +21,12 @@ public class Card {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public String getName() {
+        return personName;
+    }
 }

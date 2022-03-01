@@ -8,8 +8,8 @@ public class CardStore {
     private static Card sc_3 = new Card("Carl", "4321432143214321", "135246", "NORM");
     private static Card sc_4 = new Card("Dion", "4231423142314231", "246135", "NORM");
 
-    public static Card[] cards = {sc_1, sc_2, sc_3, sc_4};
-    public static List<Card> cardList = Arrays.asList(cards);
+    private static Card[] cards = {sc_1, sc_2, sc_3, sc_4};
+    public static List<Card> cardList = new ArrayList<Card>(Arrays.asList(cards));
 
     public static Card getCardFromList(int index) {
         return cardList.get(index);
@@ -17,6 +17,10 @@ public class CardStore {
 
     public static void updateCardStatus(int index, String status) {
         cardList.get(index).setStatus(status);
+    }
+
+    public static void addCard(Card c) {
+        cardList.add(c);
     }
 
 }

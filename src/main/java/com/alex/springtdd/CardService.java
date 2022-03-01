@@ -16,4 +16,10 @@ public class CardService {
     public void unfreezeCard(int index) {
         CardStore.updateCardStatus(index, "NORM");
     }
+
+    public void reportCardAsLost(int index) {
+        Card reportedCard = CardStore.getCardFromList(index);
+        CardStore.updateCardStatus(index, "LOST");
+        CardStore.addCard(new Card(reportedCard.getName(), "1230123012301230", "333333", "NEW"));
+    }
 }
