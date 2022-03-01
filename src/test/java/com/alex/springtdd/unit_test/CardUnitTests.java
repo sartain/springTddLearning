@@ -72,4 +72,16 @@ public class CardUnitTests {
         assertEquals("LOST", originalCard.getStatus());
     }
 
+    @Test
+    public void reportStolenUpdatesCardStatusAndReissuesNewCard() {
+        CardService s = new CardService();
+        Card originalCard = CardStore.getCardFromList(1);
+        s.reportCardAsStolen(1);
+        Card newCard = CardStore.getCardFromList(CardStore.cardList.size() - 1);
+
+        assertNotEquals(newCard.getCardNumber(), originalCard.getCardNumber());
+        assertEquals("NEW", newCard.getStatus());
+        assertEquals("STLC", originalCard.getStatus());
+    }
+
 }

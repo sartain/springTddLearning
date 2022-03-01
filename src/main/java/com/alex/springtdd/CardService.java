@@ -22,4 +22,10 @@ public class CardService {
         CardStore.updateCardStatus(index, "LOST");
         CardStore.addCard(new Card(reportedCard.getName(), "1230123012301230", "333333", "NEW"));
     }
+
+    public void reportCardAsStolen(int index) {
+        Card reportedCard = CardStore.getCardFromList(index);
+        CardStore.updateCardStatus(index, "STLC");
+        CardStore.addCard(new Card(reportedCard.getName(), "1230123012301230", "333333", "NEW"));
+    }
 }
