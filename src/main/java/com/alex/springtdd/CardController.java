@@ -13,4 +13,9 @@ public class CardController {
     public Card getCardFromList(@RequestParam int index) {
         return service.getCardGivenIndex(index);
     }
+
+    @GetMapping("/cards")
+    public Card getFirstCard() {
+        return service.getCardGivenIndex(1);
+    }
 }
