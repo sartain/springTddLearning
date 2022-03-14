@@ -9,12 +9,12 @@ public class CardController {
 
     CardService service = new CardService();
 
-    @GetMapping("/cards/{index}")
+    @GetMapping("/cards")
     public Card getCardFromList(@RequestParam int index) {
         return service.getCardGivenIndex(index);
     }
 
-    @GetMapping("/cards")
+    @GetMapping("/card")
     public Card getFirstCard() {
         return service.getCardGivenIndex(1);
     }
