@@ -1,6 +1,7 @@
 package com.alex.springtdd;
 
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class CardService {
@@ -8,6 +9,7 @@ public class CardService {
     public CardService(){
 
     }
+    public List<Card> getAllCards() { return CardStore.cardList; }
 
     public Card getCardGivenIndex(int index) {
         return CardStore.getCardFromList(index);

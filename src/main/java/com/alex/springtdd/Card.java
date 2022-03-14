@@ -1,18 +1,29 @@
 package com.alex.springtdd;
 
+import java.util.Objects;
+
 public class Card {
 
     private String status;
-    private String personName;
+    private String name;
     private String cardNumber;
     private String cardSerno;
 
-    public Card(String personName, String cardNumber, String cardSerno, String status) {
-        this.personName = personName;
+    //For deserialization
+    public Card() {}
+
+    public Card(String name, String cardNumber, String cardSerno, String status) {
+        this.name = name;
         this.cardNumber = cardNumber;
         this.cardSerno = cardSerno;
         this.status = status;
     }
+
+    public String getCardSerno() { return cardSerno; }
+
+    public void setCardSerno(String cardSerno) { this.cardSerno = cardSerno;}
+
+    public void setCardNumber(String cardNumber) {this.cardNumber = cardNumber;}
 
     public String getStatus() {
         return status;
@@ -27,6 +38,20 @@ public class Card {
     }
 
     public String getName() {
-        return personName;
+        return name;
+    }
+
+    public void setName(String name) { this.name = name; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Card)) {
+            return false;
+        }
+        Card c = (Card) o;
+        return Objects.equals(c.cardNumber, this.cardNumber);
     }
 }

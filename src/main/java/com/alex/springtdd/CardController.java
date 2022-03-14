@@ -3,19 +3,21 @@ package com.alex.springtdd;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 public class CardController {
 
     CardService service = new CardService();
 
-    @GetMapping("/cards")
-    public Card getCardFromList(@RequestParam int index) {
-        return service.getCardGivenIndex(index);
+    @GetMapping("/card")
+    public Mono<Card> getCardFromList(@RequestParam(required = true) int index) {
+        return Mono.just(service.getCardGivenIndex(index));
     }
 
-    @GetMapping("/card")
-    public Card getFirstCard() {
-        return service.getCardGivenIndex(1);
+    @GetMapping("/cards")
+    public Flux<Card> getCardFromList() {
+        return Flux.fromIterable(service.getAllCards());
     }
 }
